@@ -9,13 +9,10 @@ for line in content:
       if(time not in node0):
           node0[time] = 0
       if(record[0] == "+" ):
-       node0[time] += 1
-       queue_size += 1
+        queue_size = queue_size +1
       elif(record[0] == "-"):
-       if(node0[time] != 0):
-        node0[time] -= 1
-       else: node0[time] = queue_size - 1
-       queue_size -= 1    
+        queue_size = queue_size - 1
+      node0[time] = queue_size
 output = open("queue_size/output.cwnd", "w")
 for op in node0:
  output.writelines(op)
@@ -23,4 +20,3 @@ for op in node0:
  output.writelines("\n")
 output.close()
 print("************************")
-
