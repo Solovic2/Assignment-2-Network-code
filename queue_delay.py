@@ -5,17 +5,19 @@ delay={}
 queue_size=0
 count = 0
 for line in content:
-    record = line.split(" ",3)
-    packet = record[3]
+    record = line.split(" ",4)
+    packet = record[4]
     if((record[0] == "+" or record[0] == "-") and record[2][10] == "0"):
       if(record[0] == "+" ):
-       node0[packet] += 1
+       node0[packet] = record[1]
       elif(record[0] == "-"):
-       delay[count] = node0[packet]
+       delay[count] = [node0[packet],record[1]]
        count+=1
-output = open("output.txt", "w")
+
+output = open("delay/output_delay.cwnd", "w")
 for op in delay:
- output.writelines(op)
- output.writelines(" " + str(delay[op]))
+ output.writelines(delay[op][0])
+ output.writelines("\t" + delay[op][1])
  output.writelines("\n")
+output.close()
 print("************************")
