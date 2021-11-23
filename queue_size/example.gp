@@ -1,5 +1,6 @@
 set term postscript eps color
-set output 'cwnd.eps'
+set output 'queue_size_10.eps'
 set ylabel 'Queue Size'
 set xlabel 'time'
-plot 'output.cwnd' using 1:2 with lines
+set yrange [0:11]
+plot 'output.cwnd' with lines
