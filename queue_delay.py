@@ -11,9 +11,8 @@ for line in content:
       if(record[0] == "+" ):
        node0[packet] = record[1]
       elif(record[0] == "-"):
-       delay[count] = [node0[packet],record[1]]
+       delay[count] = [record[1],str( float(record[1]) -float(node0[packet]))]
        count+=1
-
 output = open("delay/output_delay.cwnd", "w")
 for op in delay:
  output.writelines(delay[op][0])
